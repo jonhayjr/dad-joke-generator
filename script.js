@@ -24,3 +24,51 @@ const jokes = [
      answer: 'I guess the two of us aren\'t going to work out.'
     }
 ]
+
+/*Store random joke that is currently selected*/
+let currentRandomJoke = [];
+
+/*Store previously random Numbers*/
+let randomNumbers = [];
+
+/*Helper function to generate random number base on array length.  If array isn't provided, 10 is used as default/*/
+const getRandomNumber = (arr) => {
+    const arrLength = arr ? arr.length : 10;
+    return Math.floor(Math.random() * arrLength);
+}
+
+//Need to fix bug with randomNumbers array logic.
+/*Function to select random joke*/
+const getRandomJoke = () => {
+    let randomNumber = getRandomNumber(jokes)
+    
+    //Pick new random number if it already exists in randomNumbers array
+    while (randomNumbers.indexOf(randomNumber) >= 0 && randomNumbers.length !== jokes.length) {
+        randomNumber = getRandomNumber(jokes);
+    }
+    
+    //If randomNumber array equals jokes arrray length, reset it.
+    if (randomNumbers.length === jokes.length) {
+        randomNumbers = [];
+    }
+    
+    //Push random number to randomNumbers array
+    randomNumbers.push(randomNumber);
+    
+    //Select random joke
+    currentRandomJoke = jokes[randomNumber];
+    
+    //Log random joke
+    console.log(currentRandomJoke.joke);
+}
+
+/*Function to display answer associated with joke*/
+const getRandomJokeAnswer = () => {
+    console.log(currentRandomJoke.answer);
+}
+
+/*Run function to get random joke*/
+getRandomJoke();
+
+/*Display answer after 3 seconds*/
+setTimeout(getRandomJokeAnswer, 3000);
