@@ -37,10 +37,9 @@ const getRandomNumber = (arr) => {
     return Math.floor(Math.random() * arrLength);
 }
 
-//Need to fix bug with randomNumbers array logic.
 /*Function to select random joke*/
 const getRandomJoke = () => {
-    let randomNumber = getRandomNumber(jokes)
+    let randomNumber = getRandomNumber(jokes);
     
     //Pick new random number if it already exists in randomNumbers array
     while (randomNumbers.indexOf(randomNumber) >= 0 && randomNumbers.length !== jokes.length) {
@@ -58,17 +57,22 @@ const getRandomJoke = () => {
     //Select random joke
     currentRandomJoke = jokes[randomNumber];
     
-    //Log random joke
-    console.log(currentRandomJoke.joke);
+    //Return random joke
+    return `${currentRandomJoke.joke}\n${currentRandomJoke.answer}`;
 }
 
-/*Function to display answer associated with joke*/
-const getRandomJokeAnswer = () => {
-    console.log(currentRandomJoke.answer);
-}
+/*Testing function*/
+/*console.log(getRandomJoke());
 
-/*Run function to get random joke*/
-getRandomJoke();
+console.log(getRandomJoke());
 
-/*Display answer after 3 seconds*/
-setTimeout(getRandomJokeAnswer, 3000);
+console.log(getRandomJoke());
+
+console.log(getRandomJoke());
+
+console.log(getRandomJoke());
+
+console.log(getRandomJoke());*/
+
+
+
